@@ -1,0 +1,31 @@
+.app {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.schedule-layout {
+  display: flex;
+  flex: 1;
+  margin-left: 70px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+  background-color: transparent;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.content-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.2rem;
+  color: #6c757d;
+  text-align: center;
+} 
