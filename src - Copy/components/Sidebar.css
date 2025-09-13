@@ -1,0 +1,144 @@
+.sidebar {
+  width: 70px;
+  height: 100vh;
+  background: #8B0000;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 0.5rem 0.25rem 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.sidebar-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.sidebar-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.25rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0;
+  position: relative;
+}
+
+.sidebar-tab:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.sidebar-tab.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 4px solid #fff;
+  font-weight: 600;
+}
+
+.sidebar-tab.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #fff;
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+.tab-label {
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  padding: 0.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.user-avatar {
+  width: 25px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.user-details {
+  text-align: center;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.6rem;
+  margin-bottom: 0.1rem;
+}
+
+.user-role {
+  font-size: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .app {
+    flex-direction: column;
+  }
+  
+  .main-content {
+    margin: 0;
+    border-radius: 0;
+  }
+} 

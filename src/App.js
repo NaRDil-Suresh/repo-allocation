@@ -5,10 +5,13 @@ import Schedule from './components/Schedule';
 import PeopleSidebar from './components/PeopleSidebar';
 import ProjectPlanSidebar from './components/ProjectPlanSidebar';
 import LoadingPage from './components/LoadingPage';
+import Login from './components/Login';
 
 function App() {
   const [activeTab, setActiveTab] = useState('schedule');
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null); // 👈 new state
+  
 
   // Load team members from localStorage or use default data
   const loadTeamMembersFromStorage = () => {
@@ -52,7 +55,7 @@ function App() {
         role: '',
         team: 'Recekesavan Team',
         hours: '16h',
-        color: '#4A90E2'
+        color: '#34da6bff'
       },
       {
         id: 5,
@@ -61,7 +64,7 @@ function App() {
         role: '',
         team: 'Recekesavan Team',
         hours: '32h',
-        color: '#4A90E2'
+        color: '#24b46cff'
       }
     ];
   };
@@ -73,8 +76,10 @@ function App() {
     localStorage.setItem('team-members', JSON.stringify(teamMembers));
   }, [teamMembers]);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
+  const handleLoadingComplete = () => setIsLoading(false);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
   };
 
   const handleAddTeamMember = (personData) => {
@@ -140,6 +145,8 @@ function App() {
     <>
       {isLoading ? (
         <LoadingPage onLoadingComplete={handleLoadingComplete} />
+      ) : !user ? (    // 👈 if not logged in, show login
+        <Login onLogin={handleLogin} />
       ) : (
         <div className="app">
           <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -154,5 +161,6 @@ function App() {
     </>
   );
 }
+
 
 export default App; 

@@ -268,7 +268,7 @@ const Schedule = ({ teamMembers }) => {
       weekIndex: weekIndex,
       dayIndex: dayIndex,
       title: '',
-      hours: '8h',
+      hours: '10h',
       color: '#FF6B6B',
       project: '',
       status: 'pending',

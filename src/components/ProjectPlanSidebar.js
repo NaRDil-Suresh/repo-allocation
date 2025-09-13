@@ -90,6 +90,7 @@ const ProjectPlanSidebar = () => {
   }, [projects]);
 
   const handleCreateProject = (newProject) => {
+    console.log('Adding project in parent:', newProject); // Debugging
     setProjects(prev => [...prev, newProject]);
   };
 
@@ -203,7 +204,7 @@ const ProjectPlanSidebar = () => {
 
       <ProjectModal
         isOpen={showProjectModal}
-        onClose={() => setShowProjectModal(false)}
+        onClose={() => { console.log('Closing modal'); setShowProjectModal(false); }}
         onCreateProject={handleCreateProject}
       />
     </>

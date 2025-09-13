@@ -13,9 +13,10 @@ const ProjectModal = ({ isOpen, onClose, onCreateProject }) => {
     notes: '',
     managersCanEdit: false
   });
-
   const [showBudget, setShowBudget] = useState(false);
   const [showTeam, setShowTeam] = useState(false);
+
+  if (!isOpen) return null;
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -26,6 +27,7 @@ const ProjectModal = ({ isOpen, onClose, onCreateProject }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Submit clicked', formData); // Debugging
     if (formData.name.trim()) {
       const newProject = {
         id: Date.now(),
@@ -41,9 +43,13 @@ const ProjectModal = ({ isOpen, onClose, onCreateProject }) => {
         notes: formData.notes,
         managersCanEdit: formData.managersCanEdit
       };
-      
-      onCreateProject(newProject);
-      onClose();
+      if (onCreateProject) {
+        onCreateProject(newProject);
+        console.log('Project created:', newProject); // Debugging
+      }
+      if (onClose) {
+        onClose();
+      }
       setFormData({
         name: '',
         code: '',
@@ -62,8 +68,6 @@ const ProjectModal = ({ isOpen, onClose, onCreateProject }) => {
     const colors = ['#8B5CF6', '#EF4444', '#06B6D4', '#1E40AF', '#10B981', '#F59E0B'];
     return colors[Math.floor(Math.random() * colors.length)];
   };
-
-  if (!isOpen) return null;
 
   return (
     <div className="project-modal-overlay" onClick={onClose}>
